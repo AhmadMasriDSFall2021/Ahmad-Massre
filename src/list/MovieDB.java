@@ -1,16 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package list;
-
-/**
- *
- * @author Bilal
- */
 public class MovieDB {
-
     private static final int BUFFER_SIZE = 2;
     int effectiveNbMovies = 0;
     Movie[] moviesList = new Movie[BUFFER_SIZE];
@@ -18,14 +7,13 @@ public class MovieDB {
     public void add(Movie movie) {
         // check if the array is already full
         if (moviesList.length == effectiveNbMovies) {
-            // increase the size of the array
-            // ???
-            // 1- create a new array of larger size (BUFFER_SIZE * 2),
-            //    then copy the previous elements,
-            //    and finally add the new one
-            // 2- Arrays.copy()... check it from the JavaDoc
+           Movie[] movielistLarger = new Movie[BUFFER_SIZE*BUFFER_SIZE];
+           for(int i=0;i<movielistLarger.length;i++){
+               movielistLarger[i]=moviesList[i];
+           }
         }
-        moviesList[effectiveNbMovies] = movie;
+        else
+        moviesList[effectiveNbMovies] =movie;
         effectiveNbMovies++;
     }
 
