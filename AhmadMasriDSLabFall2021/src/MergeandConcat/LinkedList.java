@@ -1,6 +1,7 @@
 package MergeandConcat;
-public class LinkedList implements List {
 
+public class LinkedList implements List {
+    
     private class Node {
 
         Object value;
@@ -29,6 +30,24 @@ public class LinkedList implements List {
     }
 
     private Node head;
+    private Node tail;
+
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+
+    public void setTail(Node tail) {
+        this.tail = tail;
+    }
+    
 
     @Override
     public void add(Object newElement) {
@@ -54,14 +73,25 @@ public class LinkedList implements List {
      }
      return true;
     }
-    public int merge(int i1, int i2){
-        Node cn1 = head;
-        Node cn2 = head;
-        cn1.setNext(cn2.getValue());
-        
-        
+    public Object merge(LinkedList a2){
+        this.getTail().setNext(a2.getHead());
+        Node currentNode = this.getHead();
+        Object mList = new Node(this.getHead());
+         
+            while (currentNode.getNext() != null) {
+                currentNode = currentNode.getNext();
+                mList.add(currentNode);
+                
+            }
+            Node head2 = a2.getHead();
+            currentNode.setNext(new Node(head2));
+            while (currentNode.getNext() != null) {
+                currentNode = currentNode.getNext();
+                mList.add(currentNode);}
+        return mList;
         
     }
-        
-    }
+
      
+          
+    }
