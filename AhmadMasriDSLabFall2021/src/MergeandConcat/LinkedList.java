@@ -9,6 +9,11 @@ public class LinkedList implements List {
             this.value = value;
             
         }
+
+        public void setNext(Node next) {
+            this.next = next;
+        }
+        
     }
 
     private Node head;
@@ -26,17 +31,7 @@ public class LinkedList implements List {
             currentNode.next = new Node(newElement);
         }
     }
-    public boolean replace(Object oldElement, Object newElement){
-     if(oldElement == null){
-         return false;
-     }
-     Node currentNode = this.oldElement;
-     while(currentNode.next!=null){
-            newElement = currentNode.next;
-            
-     }
-     return true;
-     }
+  
      @Override
      public int size() {
         if (head == null) {
@@ -94,7 +89,7 @@ public class LinkedList implements List {
         this.head = null;
     }
     
-    public Node getHeadNode(){
+    public Node getHead(){
         if(head == null)
         {
             throw new RuntimeException("List is empty.");
@@ -157,5 +152,32 @@ public class LinkedList implements List {
         }
          throw new RuntimeException("index "+index+" not found." );
        
+    }
+    public Node getTailNode() {
+        if (isEmpty()) {
+            throw new RuntimeException("List is empty! Can't fetch tail.");
+        }
+        //initialize
+        Node currentNode = head;
+        while (currentNode.next != null) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
+    }
+
+    public static LinkedList merge(LinkedList list1, LinkedList list2) {
+        
+        if (list1 == null) 
+        {
+            return list2;
+        }
+        if (list2 == null) {
+            return list1;
+        }
+      
+        LinkedList merged = list1;
+        merged.getTailNode().setNext(list2.getHead());
+
+        return merged; 
     }
   }
