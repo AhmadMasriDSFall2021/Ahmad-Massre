@@ -50,19 +50,10 @@ public class ArrayList implements List {
             throw new ArrayIndexOutOfBoundsException("Invlaid Index " + index);
         }
         final Object valueToRemove = list[index];
-
-        // 1- Keep all the elements from 0 to index-1 from list in place
-        // 2- copy all the elements from index+1 to effectiveSize-1 from list[i] to list[i-1]
-        // 3- effectiveSize--
         for (int i = index + 1; i < effectiveSize; i++) {
             list[i - 1] = list[i];
         }
         effectiveSize--;
-
-        // 4- if the effectiveSize is divisible by BUFFER_SIZE
-        //      create a new array with a size smaller by BUFFER_SIZE
-        //      Copy the old array to the new one
-        //      replace the "list" attribute by the new array
         if (effectiveSize % BUFFER_SIZE == 0) {
             list = Arrays.copyOf(list, list.length - BUFFER_SIZE);
         }
@@ -88,6 +79,15 @@ public class ArrayList implements List {
             }
         }
         return -1;
+    }
+    public void replace(int index, Object newElement){
+        for(int i = 0;i<effectiveSize;i++){
+            if(i==index){
+                list[i] = newElement;
+            }
+        }
+        throw new RuntimeException("index not found");
+      
     }
 
 }
