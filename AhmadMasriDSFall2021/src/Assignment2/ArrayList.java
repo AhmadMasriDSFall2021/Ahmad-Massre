@@ -89,5 +89,13 @@ public class ArrayList implements List {
         throw new RuntimeException("index not found");
       
     }
+    public int countOccurrences(Object element){ // quiz
+        int counter = 0;
+        for(int i=0;i<effectiveSize;i++)
+            if(list[i] == element){
+                counter++;
+            }
+        return counter;
+    } 
 
 }
