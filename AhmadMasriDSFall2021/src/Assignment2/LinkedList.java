@@ -226,15 +226,17 @@ public class LinkedList implements List {
         node = prev;
         return node;
     }
-   public boolean search(Object element){
+   public Object search(Object element){
        Node current = head;
+       int counter = 0;
        while(current != null){
            if(current.value.equals(element)){
-               return true;
+               System.out.println(counter);
            }
+           counter++;
            current = current.next;
        }
-       return false;
+       return element;
    }
   
    public void replace(int index, Object newElement){
@@ -259,7 +261,7 @@ public class LinkedList implements List {
         if (this.head == null) {
             if (index != 0) {
                 throw new RuntimeException("index out of range");
-            } else { 
+            } else { // if(index == 0)
                 this.head = node;
             }
         } // index is the position of the node
@@ -287,6 +289,7 @@ public class LinkedList implements List {
         node.next = current;
         previous.next = node;
     }
+  
      
       
    
@@ -310,6 +313,17 @@ public class LinkedList implements List {
             }
             System.out.println("");
        }
+        Object getPrevious(Object element){ // quiz
+       Node current = head;
+       Node node = new Node();
+       Node prev = null;
+       while(current!=null){
+           if(current.value.equals(element)){
+               return prev;
+           }
+       }
+      return null;
+   }
 }
             
       

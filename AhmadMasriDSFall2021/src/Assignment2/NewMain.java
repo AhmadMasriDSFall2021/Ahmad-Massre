@@ -1,18 +1,21 @@
 package Assignment2;
 public class NewMain {
     public static void main(String[] args) {
-       LinkedList l1 = new LinkedList();
-       l1.add("Ahmad"); // index 0 
-       l1.add("Hasan"); // index 1
-       l1.add("said"); // index 2
-       l1.print();
-       l1.replace(1, "Ali"); // replace node of index 1
-       l1.replace(2, "masri"); // replace node of index 2
-       l1.print();
-       l1.insert(0, "Mohammad");
-       l1.print();
+      
+        ArrayList a1 = new ArrayList();
+        a1.add("Ali");
+        a1.add("Mohammad");
+        a1.add("Mohammad");
+        System.out.println(a1);
+        System.out.println("Count = " + a1.countOccurrences(a1));
        
-        
+        LinkedList l1 = new LinkedList();
+        l1.add("Ali");
+        l1.add("Mohammad");
+        l1.add("Ahmad");
+        l1.print();
+        l1.getPrevious("Mohammad");
+        l1.print();
         
     }
     
