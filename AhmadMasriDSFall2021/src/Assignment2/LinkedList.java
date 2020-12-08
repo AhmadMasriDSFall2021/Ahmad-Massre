@@ -324,6 +324,16 @@ public class LinkedList implements List {
        }
       return null;
    }
+    public void replaceAll(Object existingElement, Object newElement){
+        Node current = head;
+        while(current!=null){
+            if(current.value.equals(existingElement)){
+                current.value = newElement;
+            }
+            current = current.next;
+            
+        }
+    }
 }
             
       
