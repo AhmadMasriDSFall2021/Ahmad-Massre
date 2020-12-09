@@ -334,6 +334,17 @@ public class LinkedList implements List {
             
         }
     }
+    public Object getMiddle(){
+        Node current = head;
+        int n = this.size();
+        while(current!=null){
+            if(n/2 == 0 || n/2 != 0){
+                return current.value;
+            }
+                
+        }
+        return null;
+    }
 }
             
       
