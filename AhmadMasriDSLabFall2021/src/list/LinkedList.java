@@ -1,4 +1,4 @@
-package MergeandConcat;
+package list;
 public class LinkedList implements List {
     private class Node {
 
@@ -101,13 +101,13 @@ public class LinkedList implements List {
         return this.head.value;
     }
 
-    public Object remove() {
+    public Object remove() { // Remove Tail
         if(this.isEmpty())
         {
             throw new RuntimeException("list is empty");
         }
         Node current = head;
-        while(this.isEmpty()==false){
+        while(this.isEmpty()==false){ // while(head!=null)
           if(current.next == null){
               current = null;
           }
@@ -116,7 +116,7 @@ public class LinkedList implements List {
         return current.next.value;
     } 
     @Override
-    public boolean remove(Object element) {
+    public boolean remove(Object element) { // Remove the node which is = to the element(from the middle)
         Node current = head;
         Node previousNode;
         while(current != null)
@@ -133,7 +133,7 @@ public class LinkedList implements List {
         return false;
     }
     @Override
-    public Object remove(int index) {
+    public Object remove(int index) { 
         
         Node current = head;
         Node oldNode;
@@ -167,12 +167,15 @@ public class LinkedList implements List {
 
     public static LinkedList merge(LinkedList list1, LinkedList list2) {
         
-        if (list1 == null) 
+        if (list1.isEmpty()) // if(list1 == null)
         {
             return list2;
         }
-        if (list2 == null) {
+        if (list2 == null) { // if(list2.isEmpty())
             return list1;
+        }
+        if(list1 == null && list2 == null){ // if(list1.isEmpty() && list2.isEmpty())
+            throw new RuntimeException("No list found");
         }
       
         LinkedList merged = list1;
@@ -180,4 +183,42 @@ public class LinkedList implements List {
 
         return merged; 
     }
+    public Node reverse(Node node){
+     Node prev = null;
+        Node current = head;
+        Node next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        node = prev;
+        return node;
+    }
+   public boolean search(Object element){
+       Node current = head;
+       while(current != null){
+           if(current.value.equals(element)){
+               return true;
+           }
+           current = current.next;
+       }
+       return false;
+   }
+    public void replace(int index, Object newElement){
+       Node current = head;
+       int counter = 0;
+       while(current!=null){
+           if(counter == index){
+              current.value = newElement;
+           }
+           counter++;
+           current=current.next;
+       }
+       throw new RuntimeException("Index not found");
+   }
+   
+    
+    
   }

@@ -1,4 +1,4 @@
-package MergeandConcat;
+package list;
 public class TestLinkedList {
     public static void main(String[] args) {
        LinkedList l1 = new LinkedList();
@@ -14,6 +14,9 @@ public class TestLinkedList {
         
         LinkedList merge = LinkedList.merge(l1, l2);
         System.out.println("Merged List:\n"+merge+"\n");
+        
+        l2.replace(1, "George");
+        
 
     }
     
