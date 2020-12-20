@@ -97,5 +97,80 @@ public class ArrayList implements List {
             }
         return counter;
     } 
+   public ArrayList intersect(ArrayList anotherList){
+        for(int i = 0; i<effectiveSize;i++){
+            for(int j = 0;j<effectiveSize;j++){
+                if(list[i].equals(list[j]))
+                    anotherList.add(this.list[i]);
+            }
+            
+        }
+        return anotherList;
+        
 
+   }
+      public Object getElement(int index) {
+        if (index > 0 || index < effectiveSize) {
+            return list[index];
+        } else {
+            throw new IndexOutOfBoundsException(index);
+        }
+    }
+    public void print() {
+        System.out.print("Index  : \t");
+        for (int i = 0; i < effectiveSize; i++) {
+            System.out.print((i) + "\t");
+        }
+
+        System.out.print("\nElement : \t");
+
+        for (int i = 0; i < effectiveSize; i++) {
+            System.out.print(list[i] + "\t");
+        }
+
+        System.out.println("\n");
+    }
+    public boolean contains(Object item){
+        for(int i=0;i<effectiveSize;i++){
+            if(list[i].equals(item)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public ArrayList merge(ArrayList l2){
+        ArrayList l1 = this;
+        for(int i=0;i<effectiveSize;i++){
+            l1.add(l2.getElement(i));
+        }
+        return l1;
+    }
+    public boolean doesNotContain(List anotherList){
+        ArrayList list1 = this;
+         if(!(list1.contains(anotherList))){
+             return true;
+         }else{
+         return false;
+    }
+    }
+
+    /**
+     *
+     * @param anotherList
+     * @return
+     */
+    public List getDistinct(List anotherList){
+        ArrayList list1 = this;
+         if(list1.doesNotContain(anotherList)){
+             return list1.getDistinct(anotherList);
+         }else{
+             throw new RuntimeException("");
+         
+    }
+        
+         
+    }
+
+
+    
 }
