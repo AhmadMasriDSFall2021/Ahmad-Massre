@@ -15,7 +15,13 @@ public class TestQueue {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ArrayQueue q = new ArrayQueue();
+        q.enqueue(3);
+        q.enqueue(2);
+        q.enqueue(1);
+        q.print();
+        ArrayQueue q2 = new ArrayQueue();
+        q2.print();
     }
     
 }

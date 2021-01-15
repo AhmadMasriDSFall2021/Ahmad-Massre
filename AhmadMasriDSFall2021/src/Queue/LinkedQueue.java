@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package queue;
+package Queue;
 
 /**
  * QUEUE IMPLEMENTS FIFO STRUCTURE (FIRST-IN FIRST-OUT)
@@ -11,6 +11,40 @@ package queue;
  * @author Bader
  */
 public class LinkedQueue implements QueueInterface {
+    private class Node {
+
+        Object value;
+        Node next;
+
+        public Node(Object value) {
+            this.value = value;
+            
+        }
+
+        public Node() {
+        }
+        
+
+        public Node getNext() {
+            return next;
+        }
+        
+
+        public void setNext(Node next) {
+            this.next = next;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public void setValue(Object value) {
+            this.value = value;
+        }
+        
+        
+    }
+
 
     private Node front;
     private Node back;
@@ -79,4 +113,17 @@ public class LinkedQueue implements QueueInterface {
             System.out.println();
         }
     }
+    public boolean Search(Object element){
+        if(isEmpty()){
+            throw new NullPointerException("Queue is empty");
+        }
+        Node current = this.front;
+        while(current.getNext()!=this.back)
+        {
+            if(current.getValue().equals(element))
+                return true;
+        }
+        return false;
+    }
+  
 }

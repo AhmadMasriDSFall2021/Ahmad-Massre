@@ -3,23 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Queue;
+package Stack;
 
 /**
  *
  * @author Bader
  */
-public interface QueueInterface {
+public interface StackInterface {
 
     boolean isEmpty();
 
     void makeEmpty();
 
-    //similar to insertAtFront
-    void enqueue(Object value);
+    Object peek();
 
-    //similar to removeFromBack
-    void dequeue();
+    //similar to insertAtFront
+    void push(Object value);
+
+    //similar to removeFromFront
+    void pop();
 
     void print();
 

@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package queue;
+package Queue;
 
-/**
- * QUEUE IMPLEMENTS FIFO STRUCTURE (FIRST-IN FIRST-OUT)
- *
- * @author Bader
- */
 public class ArrayQueue implements QueueInterface {
 
     private Object[] array;
@@ -55,7 +45,7 @@ public class ArrayQueue implements QueueInterface {
     }
 
     //similar to removeFromBack
-    @Override
+   // @Override
     public void dequeue() {
         if (isEmpty()) {
             throw new NullPointerException("Queue is empty. No values to remove.");
@@ -70,7 +60,7 @@ public class ArrayQueue implements QueueInterface {
         array = newArray;
     }
 
-    @Override
+    
     public void print() {
         if (isEmpty()) {
             System.out.println("Queue is empty");
@@ -82,17 +72,35 @@ public class ArrayQueue implements QueueInterface {
         }
     }
     
-    public void compareTo(){
-        int array[] = null;
-        for(int i=back + 1;i>0;i--){
-            if(array[i]==array[i-1])
-                System.out.println("Equal");
-            if(array[i-1]>array[i]){
-                System.out.println("greater");
-                if(array[i-1]<array[i]){
-                System.out.println("smaller");
-            }
+    public void Search(Object element){
+        if(isEmpty()){
+            throw new NullPointerException("Queue is empty");
         }
+        for(int i= back+1;i>0;i--){
+            { if(array[i].equals(element))
+                System.out.println(element);}
+             
+             if(array[i]!=element)
+                 System.out.println("element not found");
+        }
+       
     }
-}
+  
+    public void getMax(){
+         if(isEmpty()){
+            throw new NullPointerException("Queue is empty");
+        } 
+          for(int i= back+1;i>0;i--){
+              if(back>back-1){
+                  back = back-1;
+              }
+          }
+        
+    }
+    
+ 
+  
+    
+    
+   
 }

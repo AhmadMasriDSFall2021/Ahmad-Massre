@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Queue;
+package SLL;
 
 /**
  *
@@ -48,4 +48,6 @@ class Node {
     public String toString() {
         return "Node{" + "value=" + value + ", next=" + next + '}';
     }
+
+
 }
