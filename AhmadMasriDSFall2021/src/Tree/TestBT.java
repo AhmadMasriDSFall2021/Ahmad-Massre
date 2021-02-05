@@ -35,12 +35,10 @@ public class TestBT {
         N2.setRight(N5);
         N3.setLeft(N6);
         N4.setRight(N7);
-        T.printInOrder();
-        System.out.println(T.countOdd()+" odd numbers");
-        System.out.println(T.countEven()+" even numbers");
-        System.out.println(T.countLeaves()+" Leave numbers");
-        BinaryNode t = T.cloneTree();
-        t.printPreOrder();
+        System.out.println(T.countOneChildNodes()+" nodes with one child");
+        
+     
+       
         
         
     }

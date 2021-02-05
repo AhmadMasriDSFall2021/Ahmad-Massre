@@ -37,6 +37,7 @@ public class TestBST {
             System.out.println("not binary search tree");
         System.out.println(t.getLevelOf(50));
         System.out.println(t.SumOfLeaves());
+        System.out.println(t.getMax());
     }
     
 }

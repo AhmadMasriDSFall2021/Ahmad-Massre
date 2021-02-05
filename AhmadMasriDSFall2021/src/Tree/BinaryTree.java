@@ -184,27 +184,18 @@ public class BinaryTree<T> {
           else  
             return count(cn.getLeft(),item) + count(cn.getRight(),item);
      }
-     /* public T getPathTo(T item){
+     public T getPathTo(T item){
           if(Root == null)
               return null;
           return getPathTo(Root,item);
       }
       private T getPathTo(BinaryNode cn, T item){
-          if(cn == null)
-              return null;
-          
-          if(cn.getElement() != item){
-              if(cn.getLeft() != null)
-                  return getPathTo(cn.getLeft(),item);
-              if(cn.getRight() != null)
-                  return getPathTo(cn.getRight(),item);
-              }
-          
-          
-          
-                  
-           
-      }  */
+          if(cn.getLeft() != null)
+                return getPathTo(cn.getLeft(),item);
+          return getPathTo(cn.getRight(),item);
+              
+    
+      }  
      public int getMin() {
         if (Root == null) {
             throw new RuntimeException("Tree is empty.");
@@ -233,23 +224,7 @@ public class BinaryTree<T> {
           }
           return min;
       }
-      public T getPathTo(T item){
-          if(Root == null)
-              return null;
-          return getPathTo(Root,item);
-      }
-      private T getPathTo(BinaryNode N,T item){
-          if(N.getElement() == item)
-              System.out.println(item);
-         
-          else {
-              if(N.getLeft()!=null)
-                   System.out.println(getPathTo(N.getLeft(),item));
-               if(N.getRight()!=null)
-                   System.out.println(getPathTo(N.getRight(),item));
-          }
-          return null;
-      }
+     
       public int getMax() {
         if (Root == null) {
             throw new RuntimeException("Tree is empty.");
@@ -314,15 +289,49 @@ public class BinaryTree<T> {
        public BinaryNode cloneTree(){
         return cloneTree(Root);
     }
-    private BinaryNode cloneTree(BinaryNode n){
+       private BinaryNode cloneTree(BinaryNode n){
         if(n == null)
             return n;
         BinaryNode t = n; 
-        t.setLeft(cloneTree(n.getLeft()));
-        t.setRight(cloneTree(n.getRight()));
-        t.setElement(n.getElement());
+        t.setLeft(cloneTree(t.getLeft()));
+        t.setRight(cloneTree(t.getRight()));
+        t.setElement(t.getElement());
         return t;
     }
-     
+       public BinaryNode mirrorTree()
+       {
+           return mirrorTree(Root);
+       }
+       private BinaryNode mirrorTree(BinaryNode n){
+           if(n==null)
+               return n;
+           BinaryNode t = n;
+           t.setElement(n.getElement());
+           t.setLeft(mirrorTree(n.getRight()));
+           t.setRight(mirrorTree(n.getLeft()));
+           
+           return t;
+           
+       }
+       public int countOneChildNodes(){
+           return countOneChildNodes(Root);
+       }
+       private int countOneChildNodes(BinaryNode n){
+           int count = 0;
+            if(n!=null){
+               if (n.getLeft() == null && n.getRight() != null ) {
+                  count++;
+               countOneChildNodes(n.getLeft());
+               }
+               if(n.getLeft() != null && n.getRight() == null )
+                   count++;
+               countOneChildNodes(n.getRight());
+            }
+            return count;
+            
+      
+   }
 }
+
+
 

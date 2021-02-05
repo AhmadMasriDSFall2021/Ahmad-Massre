@@ -190,7 +190,32 @@ public class BST {
              RemoveOdd(n.getLeft());
          if(n.getRight()!=null)
              RemoveOdd(n.getRight());      
+     } 
+     public int getMax(){
+         if(Root == null){
+             return 0;
+         }
+         return Root.getMax();
      }
+     private int getMax(BinaryNode n){
+         int max = (int) n.getElement();
+         int maxR = getMax(n.getRight());
+         if(n.getRight()!=null)
+             return maxR;
+         return max;
+        
+		
+	} 
+     public static void PrintArraySortedUsingBST(SLL list){
+         BST t = new BST();
+          SLL cn;
+          while(cn != null){
+              t.Add(cn.getNode());
+          }
+          t.printInOrder();
+     }
+    
+    
    
     
     

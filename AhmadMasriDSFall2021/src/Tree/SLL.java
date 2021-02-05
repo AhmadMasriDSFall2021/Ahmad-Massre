@@ -1,33 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package SLL;
-public class SLL implements ListInterface {
 
-    private Node head;
+package Tree;
+
+
+
+
+public class SLL {
+    
+
+    private SLLNode head;
 
     public SLL() {
         this.head = null;
     }
 
-    public SLL(Node head) {
+    public SLL(SLLNode head) {
         this.head = head;
     }
 
     public SLL(Object nodeValue) {
-        this.head = new Node(nodeValue);
+        this.head = new SLLNode(nodeValue);
     }
 
-    @Override
+    
     public int size() {
         if (isEmpty()) {
             return 0;
             //you can also check here if head.getNext() == null to return 1
             //but it's not necessary as it will be checked in the loop
         } else {
-            Node currentNode = this.head;
+            SLLNode currentNode = this.head;
             int count = 0;
             while (currentNode != null) {
                 currentNode = currentNode.getNext();
@@ -37,7 +38,7 @@ public class SLL implements ListInterface {
         }
     }
 
-    @Override
+    
     public boolean isEmpty() {
         return this.head == null;
         //similar to
@@ -53,7 +54,7 @@ public class SLL implements ListInterface {
         this.head = null;
     }
 
-    public Node getHeadNode() {
+    public SLLNode getHeadNode() {
         if (isEmpty()) {
             throw new RuntimeException("List is empty! Can't fetch head.");
         } else {
@@ -65,12 +66,12 @@ public class SLL implements ListInterface {
         return this.getHeadNode().getValue();
     }
 
-    public Node getTailNode() {
+    public SLLNode getTailNode() {
         if (isEmpty()) {
             throw new RuntimeException("List is empty! Can't fetch tail.");
         }
         //initialize
-        Node currentNode = head;
+        SLLNode currentNode = head;
         while (currentNode.getNext() != null) {
             currentNode = currentNode.getNext();
         }
@@ -82,7 +83,7 @@ public class SLL implements ListInterface {
     }
 
     //remove initial conditions
-    public Node getNode(int index) {
+    public SLLNode getNode(int index) {
         //no need since we are throwing default exception after while loop
 //        if (index < 0 || index >= size()) {
 //            throw new ArrayIndexOutOfBoundsException();
@@ -90,7 +91,7 @@ public class SLL implements ListInterface {
 //            throw new RuntimeException("Cannot fetch node, list is empty!");
 //        } else {
 
-        Node currentNode = this.head;
+        SLLNode currentNode = this.head;
         int i = 0;
         while (currentNode != null) {
             if (i == index) {
@@ -103,15 +104,15 @@ public class SLL implements ListInterface {
 //        }
     }
 
-    @Override
+    
     public Object get(int index) {
         return this.getNode(index).getValue();
     }
 
     //similar to contain method
-    @Override
+    
     public int indexOf(Object element) {
-        Node currentNode = this.head;
+        SLLNode currentNode = this.head;
         int index = 0;
         while (currentNode != null) {
             if (currentNode.getValue().equals(element)) {
@@ -123,30 +124,30 @@ public class SLL implements ListInterface {
         return -1;
     }
 
-    @Override
+    
     public void add(Object newElement) {
         if (head == null) { //or if(isEmpty())
-            head = new Node(newElement);
+            head = new SLLNode(newElement);
         } else {
-            Node currentNode = head;
+            SLLNode currentNode = head;
             while (currentNode.getNext() != null) {
                 currentNode = currentNode.getNext();
             }
-            currentNode.setNext(new Node(newElement));
+            currentNode.setNext(new SLLNode(newElement));
         }
     }
     
     //removes the last element of the linked list
-    @Override
+    
     public void remove() {
         if (isEmpty()) { //OR if this.head == null //OR if size == 0
             throw new RuntimeException("List is empty.");
         } else if (this.head.getNext() == null) { //OR if size ==1
             this.makeEmpty();
         } else {
-            Node tailNode = this.getTailNode();
+            SLLNode tailNode = this.getTailNode();
 
-            Node currentNode = head;
+            SLLNode currentNode = head;
             while (!currentNode.getNext().equals(tailNode)) {
                 currentNode = currentNode.getNext();
             }
@@ -154,7 +155,7 @@ public class SLL implements ListInterface {
         }
     }
 
-    @Override
+    
     public Object remove(int index) {
         if (isEmpty()) {
             throw new RuntimeException("List is empty");
@@ -162,8 +163,8 @@ public class SLL implements ListInterface {
             if (index == 0) {
                 return this.removeHead();
             } else {
-                Node nodeAtIndex = this.getNode(index);
-                Node currentNode = this.head;
+                SLLNode nodeAtIndex = this.getNode(index);
+                SLLNode currentNode = this.head;
                 //traversing the linked list to find the node at given index
                 while (!currentNode.getNext().equals(nodeAtIndex)) {
                     currentNode = currentNode.getNext();
@@ -179,18 +180,18 @@ public class SLL implements ListInterface {
         if (isEmpty()) {
             throw new RuntimeException("List is empty. Cannot remove head");
         } else {
-            Node nodeToDelete = this.head;
+            SLLNode nodeToDelete = this.head;
             if (this.head.getNext() == null) {
                 this.makeEmpty();
             } else {
-                Node secondNode = this.head.getNext();
+                SLLNode secondNode = this.head.getNext();
                 this.head = secondNode;
             }
             return nodeToDelete.getValue();
         }
     }
 
-    @Override
+    
     public Object remove(Object element) {
         if (isEmpty()) {
             throw new RuntimeException("List is empty");
@@ -234,12 +235,12 @@ public class SLL implements ListInterface {
         return mergedList2; //or uncomment first way, comment second way, and return mergedList1 to test first way;
     }
 
-    @Override
+    
     public void print() {
         if (isEmpty()) {
             System.out.println("The list is empty.");
         } else {
-            Node currentNode = head;
+            SLLNode currentNode = head;
             while (currentNode != null) {
                 System.out.print(currentNode.getValue() + " --> ");
                 currentNode = currentNode.getNext();
@@ -247,5 +248,4 @@ public class SLL implements ListInterface {
             System.out.println("");
         }
     }
-   
 }

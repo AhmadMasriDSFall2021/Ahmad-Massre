@@ -26,8 +26,7 @@ public class TestSLL {
         list2.add(5);
         list2.add(6);
         list2.print();
-        list3.union(list1, list2);
-        list3.print();
+        
         
     }
     
