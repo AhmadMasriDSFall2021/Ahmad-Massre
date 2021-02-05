@@ -313,24 +313,23 @@ public class BinaryTree<T> {
            return t;
            
        }
-       public int countOneChildNodes(){
-           return countOneChildNodes(Root);
-       }
-       private int countOneChildNodes(BinaryNode n){
-           int count = 0;
-            if(n!=null){
-               if (n.getLeft() == null && n.getRight() != null ) {
-                  count++;
-               countOneChildNodes(n.getLeft());
-               }
-               if(n.getLeft() != null && n.getRight() == null )
-                   count++;
-               countOneChildNodes(n.getRight());
+      public int countOneChildnNode(){
+        return countOneChildnNode(Root);
+    }
+    
+    private int countOneChildnNode(BinaryNode node){
+        int count = 0;    
+        if(node != null){
+            if((node.getLeft()!=null &&  node.getRight() == null) || (node.getRight()!=null && node.getLeft()==null)){
+                count++;
             }
-            return count;
-            
-      
-   }
+            countOneChildnNode(node.getLeft());
+            countOneChildnNode(node.getRight());
+        }
+           
+        
+        return count;
+    }
 }
 
 
